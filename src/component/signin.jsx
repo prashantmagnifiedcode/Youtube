@@ -21,8 +21,6 @@ const Signin = () => {
         setdata({ ...data, [name]: value });
 
     }
-    
-
 
     const sign = async (e) => {
         e.preventDefault()

@@ -6,5 +6,5 @@ const changecookies=(state=initialstate,action)=>{
         default: return state;
     }
 }
-export default changecookies;
+//export default changecookies;
 

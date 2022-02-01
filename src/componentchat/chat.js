@@ -63,6 +63,7 @@ const sendUser = () => {
       socket.off();
     };
   }, [messagess]);
+   //checking internet connection
 
   return (
     <>
@@ -82,7 +83,7 @@ const sendUser = () => {
                  
             
         </header>
-        <div class="container">
+        <div class="containerd">
             <div class="user-window">
                 <h5>𝔭𝔢𝔯𝔰𝔬𝔫 𝔧𝔬𝔦𝔫𝔢𝔡</h5>
               

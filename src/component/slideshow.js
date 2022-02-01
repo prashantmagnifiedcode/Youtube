@@ -1,4 +1,6 @@
 import React, {  useState ,useEffect,createContext,useReducer} from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
 import { Zoom } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import Whatsapp from './whatapp'
@@ -13,7 +15,9 @@ let user;
 export const createcontexts= createContext()
 
 const Slideshow = () => {
-
+useEffect(() => {
+  AOS.init();
+}, [])
   
 const datastate= useSelector((state)=>state.changecookies)
 const whatsappstate= useSelector((state)=>state.changewhatsapp)
@@ -109,9 +113,35 @@ const dispatchnew= useDispatch()
     setacquiredata({ ...acquiredata, [name]: value });
   };
 
-  
-  
+  useEffect(async() => {
+    try{
 
+
+      const data= await fetch("https://prashantsrivastavacoder.blogspot.com/"); 
+           if(data){
+             alert("connnect");
+           }else{
+
+            alert("not")
+           }
+      
+    }catch(e){console.log(e)}
+  }, [])
+  useEffect(() => {
+
+ 
+    if ('speechSynthesis' in window) {
+      // Speech Synthesis supported 🎉
+      var msg = new SpeechSynthesisUtterance();
+      msg.text = "welcome to firecoder Best content is only here";
+      window.speechSynthesis.speak(msg);
+     }else{
+       // Speech Synthesis Not Supported 😣
+       alert("Sorry, your browser doesn't support text to speech!");
+     }
+
+  }, [1])
+  
 
   return (
     <>
@@ -122,7 +152,7 @@ const dispatchnew= useDispatch()
             return (
               <div key={index} className="slidetop">
                 <div className="slide">
-                  <a href="https://www.facebook.com/">
+                  <a href="https://www.facebook.com/" >
                     {" "}
                     <div className="slideinner"></div>{" "}
                   </a>
@@ -153,17 +183,18 @@ const dispatchnew= useDispatch()
              </div>
       }
  
-      <div className="containers">
-        <div className="containers1">
+      <div className="containers" >
+        <div className="containers1"  data-aos-easing="ease-in-out">
           <div className="about">
             <h1>GET IN TOUCH</h1>
           </div>
           <div className="containerform">
             <form action="POST" onSubmit={sendEmail}>
               <div className="forms">
-                <div className="form2 form-outline">
-                  <label htmlFor="">Name</label>
+                <div className="form2 form-outline" >
+                  <label htmlFor="" data-aos="slide-right"  data-aos-offset="20" data-aos-duration="2000">Name</label>
                   <input
+                  data-aos="slide-left"  data-aos-offset="28" data-aos-duration="2000"
                     value={acquiredata.name}
                     onChange={inputdata}
                     type="text"
@@ -172,8 +203,9 @@ const dispatchnew= useDispatch()
                   />
                 </div>
                 <div className="form2">
-                  <label htmlFor="">Phone</label>
+                  <label htmlFor="" data-aos="slide-right"  data-aos-offset="20" data-aos-duration="2000">Phone</label>
                   <input
+                  data-aos="slide-left"  data-aos-offset="28" data-aos-duration="2000"
                     value={acquiredata.phone}
                     onChange={inputdata}
                     type="phone"
@@ -182,8 +214,9 @@ const dispatchnew= useDispatch()
                   />
                 </div>
                 <div className="form2">
-                  <label htmlFor="">Adress</label>
+                  <label htmlFor="" data-aos="slide-right"  data-aos-offset="20" data-aos-duration="2000">Adress</label>
                   <input
+                  data-aos="slide-left"  data-aos-offset="28" data-aos-duration="2000"
                     value={acquiredata.address}
                     onChange={inputdata}
                     type="text"
@@ -192,8 +225,9 @@ const dispatchnew= useDispatch()
                   />
                 </div>
                 <div className="form2">
-                  <label htmlFor="">Password</label>
+                  <label htmlFor="" data-aos="slide-right"  data-aos-offset="20" data-aos-duration="2000">Password</label>
                   <input
+                  data-aos="slide-left"  data-aos-offset="28" data-aos-duration="2000"
                     value={acquiredata.password}
                     onChange={inputdata}
                     type="password"
@@ -202,8 +236,9 @@ const dispatchnew= useDispatch()
                     />
                 </div>
                 <div className="form2">
-                  <label htmlFor="">Email</label>
+                  <label htmlFor="" data-aos="slide-right"  data-aos-offset="20" data-aos-duration="2000">Email</label>
                   <input
+                  data-aos="slide-left"  data-aos-offset="28" data-aos-duration="2000"
                     value={acquiredata.email}
                     onChange={inputdata}
                     type="email"
@@ -212,8 +247,10 @@ const dispatchnew= useDispatch()
                     />
                 </div>
                 <div className="form2">
-                  <label htmlFor=""></label>
+                  <label htmlFor="" data-aos="slide-right"  data-aos-offset="20" data-aos-duration="2000"></label>
+
                   <input
+                  data-aos="slide-left"  data-aos-offset="28" data-aos-duration="2000"
                     type="Submit"
                     placeholder="send"
                   
@@ -226,6 +263,18 @@ const dispatchnew= useDispatch()
           </div>
         </div>
       </div>
+         <div className="thought">
+           <div  className="thoughtnote">
+             <p>
+                hello the world to workd in ww
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse rerum qui corporis et perferendis! A cumque nihil nulla laboriosam vitae dolorem? Omnis dicta suscipit accusamus et, quos eaque eum voluptatem?
+
+             </p>
+
+           </div>
+
+
+         </div>
 
       <footer className=" text-center footerbottom">
         <div className="container p-2 pb-0">
@@ -257,18 +306,17 @@ const dispatchnew= useDispatch()
                     className="btn btn-primary mb-4"
                     onKeyPress={(e) =>
                       e.key === "Enter" && acquiredata.subscribeemail != " "
-                        ? subscribedsend() 
+                        ?subscribedsend() 
                         : null
                     }
                     >
                     Subscribe(Latest Notification)
-                  </button>
+                  </button >
                 </div>
               </div>
             </form>
           </section>
         </div>
-
         <div className="text-center p-3  footerbottom">
           © 2020 Copyright:
           <a className="text-dark" href="/">

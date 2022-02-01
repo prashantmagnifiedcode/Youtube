@@ -7,7 +7,7 @@ const Linuxs = () => {
 
           </div>
       </div>
-    <div >
+    <div>
       <h3>LINUX COMMAND LINE</h3>
     </div>
     <div>

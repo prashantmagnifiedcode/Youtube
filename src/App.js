@@ -1,12 +1,11 @@
-import React from 'react'
-
-import Nav from './ownweb/Nav'
-
+import React,{useState} from 'react'
+import Front from './youtube/font'
+import './youtube.css'
 const App=()=>{
-
-    return (
+    return(
         <>
-         <Nav/>
+       <Front/>
+        
         </>
     )
 }

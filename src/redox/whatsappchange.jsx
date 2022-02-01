@@ -6,4 +6,4 @@ const changewhatsapp=(state=initial,action)=>{
         default: return state;
     }
 }
-export default changewhatsapp;
+//export default changewhatsapp;
